@@ -1,0 +1,69 @@
+
+# Python environment
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Databases and sensitive data
+*.db
+*.sqlite
+*.sqlite3
+data/*
+!data/.gitkeep
+
+# Backups
+*.backup
+*.bak
+*.old
+
+# Logs
+*.log
+logs/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Frontend dependencies and builds
+frontend/node_modules/
+frontend/dist/
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Database and sensitive data
+*.db
+*.sqlite
+*.sqlite3
+data/chroma_db/
+data/users_backup_*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
+
+# System
+.DS_Store
+Thumbs.db

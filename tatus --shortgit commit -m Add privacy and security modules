@@ -1,0 +1,18 @@
+ app/__init__.py                        |   0
+ app/core/__init__.py                   |  80 [32m+++++++++++++++[m
+ app/core/auth_dependencies.py          |  58 [32m+++++++++++[m
+ app/core/change_admin_password.py      |  34 [32m+++++++[m
+ app/core/create_admin.py               |  44 [32m+++++++++[m
+ app/core/security.py                   |  89 [32m+++++++++++++++++[m
+ app/database/__init__.py               |   0
+ app/database/vault.py                  | 152 [32m++++++++++++++++++++++++++++[m
+ app/recognizers/__init__.py            |   0
+ app/recognizers/indian_pii_detector.py | 175 [32m+++++++++++++++++++++++++++++++++[m
+ app/services/__init__.py               |   0
+ app/services/auth_service.py           | 112 [32m+++++++++++++++++++++[m
+ app/services/privacy_engine.py         | 151 [32m++++++++++++++++++++++++++++[m
+ tests/test_auth_security.py            |  81 [32m+++++++++++++++[m
+ tests/test_indian_pii_detector.py      |  19 [32m++++[m
+ tests/test_privacy_engine.py           | 103 [32m+++++++++++++++++++[m
+ tests/test_token_vault.py              | 102 [32m+++++++++++++++++++[m
+ 17 files changed, 1200 insertions(+)

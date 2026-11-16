@@ -1,0 +1,15 @@
+presidio-analyzer
+presidio-anonymizer
+spacy
+fastapi
+uvicorn[standard]
+streamlit
+pandas
+plotly
+pytest
+python-dotenv
+chromadb
+
+PyJWT
+pwdlib[argon2]
+cryptography

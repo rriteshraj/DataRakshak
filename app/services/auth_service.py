@@ -110,3 +110,61 @@ class AuthService:
             "is_active": bool(row[2]),
             "created_at": row[3]
         }
+
+    def change_admin_password(self, username, current_password, new_password):
+        if not all(
+            isinstance(value, str)
+            for value in (username, current_password, new_password)
+        ):
+            raise ValueError("Invalid password change request.")
+
+        username = username.strip()
+
+        if not username:
+            raise ValueError("Invalid username.")
+
+        if len(new_password) < 12 or len(new_password) > 128:
+            raise ValueError(
+                "New password must be between 12 and 128 characters."
+            )
+
+        if current_password == new_password:
+            raise ValueError(
+                "New password must differ from the current password."
+            )
+
+        with self._connect() as conn:
+            row = conn.execute("""
+                SELECT password_hash, role, is_active
+                FROM users
+                WHERE username = ?
+            """, (username,)).fetchone()
+
+            if row is None:
+                raise ValueError("Invalid current password.")
+
+            stored_hash, role, is_active = row
+
+            if role != "admin" or not is_active:
+                raise ValueError("Admin account is unavailable.")
+
+            try:
+                valid = verify_password(current_password, stored_hash)
+            except (ValueError, TypeError):
+                valid = False
+
+            if not valid:
+                raise ValueError("Invalid current password.")
+
+            new_hash = hash_password(new_password)
+
+            conn.execute("""
+                UPDATE users
+                SET password_hash = ?
+                WHERE username = ?
+            """, (new_hash, username))
+
+        return {
+            "status": "success",
+            "message": "Admin password changed."
+        }
